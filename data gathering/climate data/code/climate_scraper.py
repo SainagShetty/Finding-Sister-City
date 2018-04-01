@@ -40,7 +40,9 @@ states={ 'Alaska':'AK', 'Alabama':'AL', 'Arkansas':'AR', 'American Samoa':'AS', 
 climateData = pd.DataFrame()
 climateDataList=[]
 for i in range(len(complete_cities)):
-    print(complete_cities['Geography'][i])
+    current_comb=complete_cities['Geography'][i]
+    print(current_comb)
+    #complete_cities['Geography'][i]='Canoochee CDP, Georgia'
     cityStatepair=''
     if(';' in complete_cities['Geography'][i]):
         splitVals=complete_cities['Geography'][i].split(";")
@@ -61,7 +63,7 @@ for i in range(len(complete_cities)):
     elif 'n/a' in extractResponse[0]:
         nearLoc=nearestlocation.Check_nearestloc()   
         locVal=nearLoc.mainfunction(cityStatepair.replace("+"," "))
-        for i in range(119):
+        for i in range(159):
             print(i)
             currResp=checkResp(locVal[i].lower().replace(" ","+" ))
             if len(currResp)==0:
@@ -114,7 +116,7 @@ for i in range(len(complete_cities)):
     
     precipitation=np.mean([float(tempVals[i]['precipitation'].replace('"','').replace('n/a','0')) for i in range(11)])
     climateCurrent={}
-    climateCurrent['cityStatepair']=complete_cities['Geography'][i]
+    climateCurrent['cityStatepair']=current_comb
     climateCurrent['avgmintmp']=avgmintmp
     climateCurrent['avgmaxtmp']=avgmaxtmp
     climateCurrent['avgtmp']=avgtmp
@@ -126,7 +128,7 @@ for i in range(len(complete_cities)):
     
 dfClimate = pd.DataFrame(climateDataList)
     
-dfClimate.to_csv('climate-list2.csv')    
+dfClimate.to_csv('climate_data_complete.csv')    
     
     
     

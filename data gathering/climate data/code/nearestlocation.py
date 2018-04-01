@@ -35,9 +35,9 @@ class Check_nearestloc:
         extLatVal=cityLatLong_Dict[cityStateComb].split("/")
         latVal=extLatVal[0]
         longVal=extLatVal[1]
-        dist, ind = tree.query([(latVal,longVal)], k=120)
+        dist, ind = tree.query([(latVal,longVal)], k=160)
         citiesList=[]
-        for val in range(119):
+        for val in range(159):
             citiesList.append(cities_dict[citycoord[ind[0][val+1]]])
         
         
