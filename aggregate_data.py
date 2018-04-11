@@ -9,3 +9,7 @@ tmp.to_csv('city-list-with-proximity.csv',sep=',')
 cliDt = pd.read_csv('data gathering/climate data/data file/climate_data_complete.csv')
 tmp2 = pd.merge(tmp, cliDt, on='Geography')
 tmp2.to_csv('city-list-with-proximity-climate.csv',sep=',')
+
+popDt = pd.read_csv('data gathering/proximity/code/population_edited_list.csv')
+tmp2 = pd.merge(tmp, popDt, on='id')
+tmp2.to_csv('city-list-with-proximity-climate-population.csv',sep=',')
