@@ -63,8 +63,8 @@
             <div class="col-lg-8 mx-auto">
               <h2>Enter City Name</h2>
               <p class="lead">Enter the name of your city. We'll search for it in our database.</p>
-              <div id="city-input" class="input-group input-group-lg">
-                <input type="text" class="form-control" placeholder="Search for..." required/>
+              <div class="input-group input-group-lg">
+                <input id="city-input" type="text" class="form-control" placeholder="Search for..." required/>
                 <!-- <div class="input-group-append">
                     <button class="btn btn-large btn-secondary" type="button">Search</button>
                 </div> -->
@@ -78,39 +78,51 @@
       <section id="weights" class="bg-light">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 mx-auto container-fluid">
+            <div id="weight-section" class="col-lg-8 mx-auto container-fluid">
               <h2>Enter Weights</h2>
               <p class="lead">Use the sliders to enter the weights for each category. We'll use these weights to find your sister city.</p>
               <p class="lead"><span class="text-success"><strong>Green</strong></span> is similar and <span class="text-danger"><strong>Red</strong></span> is different.</p>
               <div class="row">
-                <div class="well col-lg-6 slide-container"><p class="slider-label lead text-center">Climate</p></div>
                 <div class="well col-lg-6 slide-container">
-                    <input type="range" min="0" max="100" value="50" class="slider">
+                  <p class="slider-label lead text-center">Climate: <span id="climate-value">50</span></p>
+                </div>
+                <div class="well col-lg-6 slide-container">
+                  <input id="climate-slider" type="range" min="0" max="100" value="50" class="slider">
                 </div>
   
-                <div class="well col-lg-6 slide-container"><p class="slider-label lead text-center">Culture</p></div>
                 <div class="well col-lg-6 slide-container">
-                    <input type="range" min="0" max="100" value="50" class="slider">
+                  <p class="slider-label lead text-center">Culture: <span id="culture-value">50</span></p>
+                </div>
+                <div class="well col-lg-6 slide-container">
+                  <input id="culture-slider" type="range" min="0" max="100" value="50" class="slider">
                 </div>
                 
-                <div class="well col-lg-6 slide-container"><p class="slider-label lead text-center">Demographics</p></div>
                 <div class="well col-lg-6 slide-container">
-                    <input type="range" min="0" max="100" value="50" class="slider">
+                  <p class="slider-label lead text-center">Demographics: <span id="demographics-value">50</span></p>
+                </div>
+                <div class="well col-lg-6 slide-container">
+                  <input id="demographics-slider" type="range" min="0" max="100" value="50" class="slider">
                 </div>
   
-                <div class="well col-lg-6 slide-container"><p class="slider-label lead text-center">Economy</p></div>
                 <div class="well col-lg-6 slide-container">
-                    <input type="range" min="0" max="100" value="50" class="slider">
+                  <p class="slider-label lead text-center">Economy: <span id="economy-value">50</span></p>
+                </div>
+                <div class="well col-lg-6 slide-container">
+                  <input id="economy-slider" type="range" min="0" max="100" value="50" class="slider">
                 </div>
   
-                <div class="well col-lg-6 slide-container"><p class="slider-label lead text-center">Politics</p></div>
                 <div class="well col-lg-6 slide-container">
-                  <input type="range" min="0" max="100" value="50" class="slider">
+                  <p class="slider-label lead text-center">Politics: <span id="politics-value">50</span></p>
+                </div>
+                <div class="well col-lg-6 slide-container">
+                  <input id="politics-slider" type="range" min="0" max="100" value="50" class="slider">
                 </div>
   
-                <div class="well col-lg-6 slide-container"><p class="slider-label lead text-center">Proximity</p></div>
                 <div class="well col-lg-6 slide-container">
-                    <input type="range" min="0" max="100" value="50" class="slider">
+                  <p class="slider-label lead text-center">Proximity: <span id="proximity-value">50</span></p>
+                </div>
+                <div class="well col-lg-6 slide-container">
+                  <input id="proximity-slider" type="range" min="0" max="100" value="50" class="slider">
                 </div>
               </div>
               <!-- <div class="well slide-container">
@@ -154,6 +166,8 @@
 
     <!-- Custom JavaScript for this theme -->
     <script src="index-files/js/scrolling-nav.js"></script>
+    <script src="index-files/js/form-control.js"></script>
+
 
   </body>
 
