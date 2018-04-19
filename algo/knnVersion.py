@@ -71,7 +71,7 @@ for node in nodes.values():
 	node[1:5] = [node[i] * weights[1] for i in range(1,5)]
 	node[5] = node[5] * weights[2]
 	node[6:] = [node[i] * weights[3] for i in range(6, len(node))]
-
+	print(node)
 tree = skln.KDTree(nodes.values(), leaf_size=2)
 dist, ind = tree.query([input_city_node], k=10)
 #print dist
