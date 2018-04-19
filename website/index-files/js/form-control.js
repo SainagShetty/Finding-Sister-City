@@ -22,8 +22,8 @@ $( function() {
 init_slider = function (slider, output) {
     slider.oninput = function() {
         output.innerHTML = slider.value
-        console.log( slider.value )
-        console.log( output.innerHTML)
+        // console.log( slider.value )
+        // console.log( output.innerHTML)
     }
 }
 
@@ -34,6 +34,6 @@ for (var i = 0; i < items.length; i++) {
 
 // Get and submit values on button click
 submit_button.onclick = function() {
-    submit_vals = [ city_input.value, sliders.map( slider => {return slider.value} ) ]
+    submit_vals = [ city_input.value, sliders.map( slider => {return (slider.value - 50) / 50.0} ) ]
     console.log( submit_vals )
 }
