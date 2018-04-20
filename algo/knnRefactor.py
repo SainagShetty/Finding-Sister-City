@@ -43,3 +43,4 @@ dist, ind = tree.query([input_city_node], k=10)
 
 for near in ind[0]:
     print( list( normalized_dict.keys() )[near])
+    print( list( city_dict.values() )[near] )
