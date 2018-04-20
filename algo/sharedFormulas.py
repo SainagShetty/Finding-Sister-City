@@ -6,6 +6,14 @@ from collections import OrderedDict
 import csv
 import copy
 
+#number of columns in each data category
+#NUM_PROX = 1
+#NUM_CLIM = 4
+#NUM_DEMO = 11
+#NUM_POLI = 2
+#NUM_ECON = 2
+
+
 def distance(lat1, lng1, lat2, lng2):
     p = pi/180     #Pi/180
     a = 0.5 - cos((lat2 - lat1) * p)/2 + cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lng2 - lng1) * p)) / 2
@@ -76,9 +84,9 @@ def get_user_input(city_dict):
         city_name = input("Enter city (use full geography): ")
 
     weights = []
-    while len(weights) != 4:
+    while len(weights) != 5:
         if weights: print("Invalid Weights")
-        weights = input("Enter list of weights [prox, clim, demog, pol]: ").split(",")
+        weights = input("Enter list of weights [prox, clim, demog, pol, econ]: ").split(",")
         try:
             weights = [float(weight.strip()) for weight in weights]
         except:
