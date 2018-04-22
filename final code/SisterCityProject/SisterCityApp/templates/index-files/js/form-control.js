@@ -17,7 +17,7 @@ paramVals[5] = document.getElementById("proximity-value2");
 
 // Autocomplete function for the input search bar
 $( function() {
-    city_names = ['Chicago', 'New York', 'Los Angeles', "San Francisco"]
+    city_names = getData()
     var limit = 5
     $( "#city-input" ).autocomplete({
         // source: city_names
@@ -44,6 +44,27 @@ for (var i = 0; i < items.length; i++) {
 	//console.log(paramVals)
 }
 
+ function getData() {
+ var cityArr=[]
+      var myRequest = new Request('/static/index-files/js/city_names.txt');
+	  console.log(myRequest)
+      fetch(myRequest)
+      .then(function(response) { 	  
+  return response.text() })
+      .then(function(text) {
+        //myArticle.innerHTML = text;
+		var cityData=text ;
+		var cityVals=cityData.split("\n");
+		for (var i = 0; i < cityVals.length; i++) {
+         		cityArr.push(cityVals[i])
+       }
+	   
+      });
+	        
+   return cityArr
+
+
+    }
 // Get and submit values on button click
 submit_button.onclick = function() {
     submit_vals = [ city_input.value, sliders.map( slider => {return slider.value} ) ]

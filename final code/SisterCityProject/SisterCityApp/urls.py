@@ -7,6 +7,8 @@ from SisterCityApp import views
 urlpatterns = [
     url(r'^$', views.homePage),
 	url(r'^getSisterCities/$', views.searchCity),
-    url(r'^getSpecificCity/$', views.searchSpecific),
+    url(r'^getSisterCities/getSpecificCity/$', views.searchSpecific),
+        url(r'^getSpecificCity/$', views.searchSpecific),
+
 
 ]

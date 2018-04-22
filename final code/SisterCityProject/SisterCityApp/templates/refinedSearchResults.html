@@ -20,53 +20,14 @@
 
     <!-- Google Fonts: Arvo -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo" />
-	
-	<script>
-	function onReady(callback) {
-    var intervalID = window.setInterval(checkReady, 10);
-
-    function checkReady() {
-        if (document.getElementsByTagName('body')[0] !== undefined) {
-            window.clearInterval(intervalID);
-            callback.call(this);
-        }
-    }
-	}
-
-function show(id, value) {
-    document.getElementById(id).style.display = value ? 'block' : 'none';
-}
-
-onReady(function () {
-    show('page', true);
-    show('loading', false);
-});
-	</script>
-	<style>
-	#page {
-    display: none;
-}
-#loading {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(192, 192, 192, 0.5);
-    background-image: url("/static/maththinking.gif"),url("/static/processing.gif");
-	background-position: top center, center center;
-    background-repeat: no-repeat, no-repeat;
-    padding: 0px;
-
-}
-	</style>
+ 
   </head>
 
   <body>
+  <div id="page">
+
+<form id="actionForm" action="getSpecificCity/" method="post">
 {% csrf_token %}
-<div id="page">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -91,84 +52,104 @@ onReady(function () {
     <div class="container">
 
       <!-- Page Heading -->
-      <h1 class="my-4">Specific Search Results
-        <small>Your Top City</small>
+      <h1 class="my-4">Specific search Results ranked by search query relevance
       </h1>
 
-     <hr>
+      
 
 
+      <hr>
+      {% for element in cityRankedList%}
+     
+      <div class="col-md-12 col-lg-12">
+          {% if forloop.counter == 1 %}
+          <h2> <span style="color:rgb(69, 23, 235);font-weight:bold">Sister Cities :</span></h2>
+          {% endif %} 
+
+          <h2 style="text-align:center;color:blue">{{element.cityname}} </h3>
+<p>Ranking score : {{element.score}}</p>
+      <div class="row">
+          <h4>Statistics by category:</h4>
+        </div>
+        <hr>
       <!-- City One -->
       <div class="row">
-        <div class="col-md-12 col-lg-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{% static "_images/cityscape.jpg" %}" alt="">
-          </a>
+
+
+        <div class="col-md-12 col-lg-4">
+          <button type="button" class="col-lg-12 btn category"  data-target="#cli01">Proximity</button>
+          <div id="cli01" >
+              <p>Latitude : <span style="color:green;font-weight:bold">{{element.latitude}}</span></p>
+              <p>Longitude : <span style="color:green;font-weight:bold">{{element.longitude}}</span></p>
+            <p>Distance in miles : {{element.distance}}</p>
+          </div>
         </div>
-        <div class="col-md-12 col-lg-5">
-          <h3>{{topcity}}</h3>
+        <div class="col-md-12 col-lg-4">
+          <button type="button" class="col-lg-12 btn category"  data-target="#cli01">Climate</button>
+          <div id="cli01" >
+            <p>Average Max. Temp. : <span style="color:green;font-weight:bold">{{element.avgmaxtmp}}</span></p>
+            <p>Average Min. Temp. : <span style="color:green;font-weight:bold">{{element.avgmintmp}}</span></p>
+            <p>Average Temp. : <span style="color:green;font-weight:bold">{{element.avgtmp}}</span></p>
+            <p>Average Rainfall : <span style="color:green;font-weight:bold">{{element.rainfall}}</span></p>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <button type="button" class="col-lg-12 btn category" data-target="#cli01">Demographics</button>
+          <div id="cli01" >
+            <p>Total Population : <span style="color:green;font-weight:bold">{{element.population}}</p>
+            <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli02">Population By Place of birth</button>
+            <div id="cli02" class="collapse" >
+                <p>Born in US : <span style="color:green;font-weight:bold">{{element.usborn}}</span></p>
+                <p>Born in US(resident state) : <span style="color:green;font-weight:bold">{{element.usbornRes}}</span></p>
+                <p>Born in US(different state) : <span style="color:green;font-weight:bold">{{element.usbornNonres}}</span></p>
+                <p>Foreign born US Citizens : <span style="color:green;font-weight:bold">{{element.uscitforeignborn}}</span></p>
+                <p> Foreign born Non-US Citizens : <span style="color:green;font-weight:bold">{{element.nonuscitForeignBorn}}</span></p>
 
-          <!-- Container for city statistics -->
-          <div class="mx-auto container-fluid">
-            <p class="lead">Statistics by category:</p>
+            </div>
+            <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli03">Married population</button>
+            <div id="cli03" class="collapse" >
+                <p>Married Males(15 years+) : <span style="color:green;font-weight:bold">{{element.marriedMales}}</span></p>
+                <p>Married Females(15 years+) : <span style="color:green;font-weight:bold">{{element.marriedFemale}}</span></p>
+              </div>
+              <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli04">Education</button>
+              <div id="cli04" class="collapse">
+                  <p>High school grad(25 years+) : <span style="color:green;font-weight:bold">{{element.highSchoolGrad}}</span></p>
+                </div> 
 
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-12">
-                  <!-- Button that controls view of all city statistics -->
-                  <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#collapse01">View City Statistics</button>
-                  
-                  <div id="collapse01" class="col-lg-12 collapse">
-                    <!-- Set of buttons that controls view to individual sets of statistics -->
-                    <div class="row">
-                      <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli01">Climate</button>
-                      <div id="cli01" class="collapse col-lg-12">
-                        <p>Average Temperature</p>
-                        <p>Average Rainfall</p>
-                      </div>
-                      <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cul01">Culture</button>
-                      <div id="cul01" class="collapse col-lg-12">
-                        <p>Language</p>
-                        <p>Religion</p>
-                        <p>Ethnicity</p>
-                      </div>
-                      <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#dem01">Demographics</button>
-                      <div id="dem01" class="collapse col-lg-12">
-                        <p>Immigration Status</p>
-                        <p>Age Bracket Size</p>
-                        <p>Marital Status</p>
-                        <p>Education</p>
-                      </div>
-                      <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#eco01">Economy</button>
-                      <div id="eco01" class="collapse col-lg-12">
-                        <p>Median Income</p>
-                        <p>Employment by Industry</p>
-                        <p>Employment Rate</p>
-                      </div>
-                      <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#pol01">Politics</button>
-                      <div id="pol01" class="collapse col-lg-12">
-                        <p>Party Alignment</p>
-                      </div>
-                      <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#pro01">Proximity</button>
-                      <div id="pro01" class="collapse col-lg-12">
-                        <p>Distance</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+          </div>
+        </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
+              <button type="button" class="col-lg-12 btn category"  data-target="#cli01">Politics</button>
+              <div id="cli01" >
+                <p>Domocrats voters (Percentage) : <span style="color:green;font-weight:bold">{{element.perDem}}</span></p>
+                <p>GOP voters (Percentage) : <span style="color:green;font-weight:bold">{{element.perGOP}}</span></p>
               </div>
             </div>
-          </div>
+            <div class="col-md-12 col-lg-4">
+              <button type="button" class="col-lg-12 btn category"  data-target="#cli01">Economy</button>
+              <div id="cli01" >
+                <p>Median income : <span style="color:green;font-weight:bold">{{element.medianIncome}}</span></p>
+                <p>Mean income : <span style="color:green;font-weight:bold">{{element.meanIncome}}</span></p>
+              </div>
+            </div>
+            </div>
+            </div>
 
-        </div>
-      </div>
+       
       <!-- /.row -->
 
       
       <hr>
-
+      {% endfor %}
 
      
+
+      
+
       <!-- Pagination -->
       <!-- <ul class="pagination justify-content-center">
         <li class="page-item">
@@ -208,6 +189,37 @@ onReady(function () {
     <!-- Bootstrap core JavaScript -->
     <script src="{% static "results-files/vendor/jquery/jquery.min.js" %}"></script>
     <script src="{% static "results-files/vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+    <script type="text/javascript">
+      var submit_button = document.getElementById("submit-button2");
+    
+         submit_button.onclick = function() { 
+        
+        document.getElementById("loading").style.display ='block';
+    
+                           
+            }; 
+    
+      </script>
+       
+        <style>
+    
+    #loading {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        background-image: url("/static/maththinking.gif"),url("/static/processing.gif");
+      background-position: 50% ,top 25% center;
+        background-repeat: no-repeat, no-repeat;
+        padding: 0px;
+    
+    }
+      </style>
+  </form>
 </div>
 <div id="loading"></div>
   </body>

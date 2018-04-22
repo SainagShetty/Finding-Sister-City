@@ -124,10 +124,10 @@ class newsrank:
         #print(cityScore)
         #print(relevanceList)    
         bestscores=sorted(relevanceList,key=itemgetter('Score'),reverse=True)
-        bestCity=bestscores[0]['City']
-        #print(bestscores)
+        #bestCity=bestscores[0]['City']
+        print(bestscores)
         
-        return bestCity
+        return bestscores
     
      
       

@@ -15,7 +15,9 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+print(BASE_DIR)
+dirname2 = os.path.dirname(os.path.realpath('__file__'))
+dirname2+='\\SisterCityApp\\\weighingScripts\\'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -30,7 +32,7 @@ ALLOWED_HOSTS = []
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    'C:/Users/sachi/Documents/DDDM Project/SisterCityProject/SisterCityApp/templates',
+    BASE_DIR+ "/SisterCityApp/templates",
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
