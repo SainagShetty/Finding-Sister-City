@@ -1,4 +1,4 @@
-var items = "climate culture demographics economy politics proximity".split(" ")
+var items = "climate demographics economy politics proximity".split(" ")
 var sliders = items.map( item => {return document.getElementById(item + "-slider")} )
 var outputs = items.map( item => {return document.getElementById(item + "-value")} )
 var submit_button = document.getElementById("submit-button")
@@ -7,11 +7,10 @@ var city_input = document.getElementById("city-input")
 
 var paramVals={}
 paramVals[0] = document.getElementById("climate-value2");
-paramVals[1] = document.getElementById("culture-value2");
-paramVals[2] = document.getElementById("demographics-value2");
-paramVals[3] = document.getElementById("economy-value2");
-paramVals[4] = document.getElementById("politics-value2");
-paramVals[5] = document.getElementById("proximity-value2");
+paramVals[1] = document.getElementById("demographics-value2");
+paramVals[2] = document.getElementById("economy-value2");
+paramVals[3] = document.getElementById("politics-value2");
+paramVals[4] = document.getElementById("proximity-value2");
 
 
 

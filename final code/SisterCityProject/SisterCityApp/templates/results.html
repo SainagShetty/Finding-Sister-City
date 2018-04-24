@@ -52,8 +52,8 @@
     <div class="container">
 
       <!-- Page Heading -->
-      <h1 class="my-4">Results
-        <small>Your Top Cities</small>
+      <h1 class="my-4">Results - 
+        <small>Your Sister Cities in Order of Match Scores</small>
       </h1>
 
       <!-- Refine Search -->
@@ -93,7 +93,7 @@
           <div id="cli01" >
               <p>Latitude : <span style="color:green;font-weight:bold">{{element.latitude}}</span></p>
               <p>Longitude : <span style="color:green;font-weight:bold">{{element.longitude}}</span></p>
-            <p>Distance in miles : {{element.distance}}</p>
+            <p>Distance in miles : <span style="color:green;font-weight:bold">{{element.distance}}</span></p>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -109,8 +109,8 @@
           <button type="button" class="col-lg-12 btn category" data-target="#cli01">Demographics</button>
           <div id="cli01" >
             <p>Total Population : <span style="color:green;font-weight:bold">{{element.population}}</p>
-            <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli02">Population By Place of birth</button>
-            <div id="cli02" class="collapse" >
+            <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli02{{forloop.counter}}">Population By Place of birth</button>
+            <div id="cli02{{forloop.counter}}"  class="collapse" >
                 <p>Born in US : <span style="color:green;font-weight:bold">{{element.usborn}}</span></p>
                 <p>Born in US(resident state) : <span style="color:green;font-weight:bold">{{element.usbornRes}}</span></p>
                 <p>Born in US(different state) : <span style="color:green;font-weight:bold">{{element.usbornNonres}}</span></p>
@@ -118,13 +118,13 @@
                 <p> Foreign born Non-US Citizens : <span style="color:green;font-weight:bold">{{element.nonuscitForeignBorn}}</span></p>
 
             </div>
-            <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli03">Married population</button>
-            <div id="cli03" class="collapse" >
+            <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli03{{forloop.counter}}">Married population</button>
+            <div id="cli03{{forloop.counter}}" class="collapse" >
                 <p>Married Males(15 years+) : <span style="color:green;font-weight:bold">{{element.marriedMales}}</span></p>
                 <p>Married Females(15 years+) : <span style="color:green;font-weight:bold">{{element.marriedFemale}}</span></p>
               </div>
-              <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli04">Education</button>
-              <div id="cli04" class="collapse">
+              <button type="button" class="col-lg-12 btn category" data-toggle="collapse" data-target="#cli04{{forloop.counter}}">Education</button>
+              <div id="cli04{{forloop.counter}}" class="collapse">
                   <p>High school grad(25 years+) : <span style="color:green;font-weight:bold">{{element.highSchoolGrad}}</span></p>
                 </div> 
 
