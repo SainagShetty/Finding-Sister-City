@@ -8,7 +8,7 @@ from SisterCityApp.weighingScripts import sharedFormulas as form
 from math import sin, cos, sqrt, atan2, radians
 
 dirname2 = os.path.dirname(os.path.realpath('__file__'))
-dirname2+='\\SisterCityApp\\\weighingScripts\\'
+dirname2+='/SisterCityApp/weighingScripts/'
 # Create a dictionary from the city_with_data file
 city_dict = form.make_city_dict(dirname2+"city_with_data.csv")
 #city_name, weights = form.get_user_input(city_dict)

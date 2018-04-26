@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 print(BASE_DIR)
 dirname2 = os.path.dirname(os.path.realpath('__file__'))
-dirname2+='\\SisterCityApp\\\weighingScripts\\'
+dirname2+='/SisterCityApp/weighingScripts/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
